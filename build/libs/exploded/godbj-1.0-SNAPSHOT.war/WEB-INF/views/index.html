@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Humans</h3>
+<p>
+    <a th:href="@{/thing}">
+        Add new human
+    </a>
+</p>
+<div class="notify">
+    <div th:if="${message}">
+        <span th:text="${message}"></span>
+    </div>
+</div>
+<form>
+    Search by name:
+    <input name="name" type="text"/>
+    <input type="submit" value="Search"/>
+</form>
+<div>
+    <a th:href="@{'/'(page=${human.number - 1})}" th:if="${human.hasPrevious()}">Previous</a>
+    <span th:text="${human.number + 1}"></span>/<span th:text="${human.totalPages}"></span>
+    <a th:href="@{'/'(page=${human.number + 1})}" th:if="${human.hasNext()}">Next</a>
+</div>
+<table id="humans">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>View</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="human : ${human}">
+        <td th:text="${human.name}"></td>
+        <td th:text="${human.description}"></td>
+        <td><a th:href="@{/thing/view/__${human.id}__}">View</a></td>
+        <td><a th:href="@{/thing/remove/__${human.id}__}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>

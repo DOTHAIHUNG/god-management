@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<h3>Create Human</h3>
+<p>
+    <a th:href="@{/}">
+        Back to human list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/thing}" th:object="${human}" method="post">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}"/></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><input type="text" th:field="*{description}"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Create"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>

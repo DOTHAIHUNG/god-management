@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<h3>View Human</h3>
+<p>
+    <a th:href="@{/}">
+        Back to human list
+    </a>
+</p>
+<div id="detail">
+    <div class="prodetail">
+        <label>FirstName:</label>
+        <label th:text="${human.getName()}"></label>
+    </div>
+    <div class="prodetail">
+        <label>Description:</label>
+        <label th:text="${human.getDescription()}"></label>
+    </div>
+</div>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
